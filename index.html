@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("imagens/fundo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+        }
+        /* Barra de navegação */
+        .navbar {
+            background-color: black;
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #a8e6cf;
+            transform: translateY(-5px);
+        }
+        /* menu dropdown (CV / Trabalhos) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .dropbtn:hover {
+            color: #a8e6cf;
+            transform: translateY(-5px);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #333;
+            min-width: 160px;
+            border-radius: 8px;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Conteúdo principal */
+        .content {
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 140px;
+            color: black;
+        }
+        .name {
+            font-size: 70px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra -->
+    <div class="navbar">
+        <div class="nav-links">
+            <a href="#">Início</a>
+            <a href="[tumblr.com](https://www.tumblr.com)" target="_blank">Tumblr</a>
+            <a href="[youtube.com](https://www.youtube.com)" target="_blank">YouTube</a>
+            <a href="[tiktok.com](https://www.tiktok.com)" target="_blank">TikTok</a>
+        </div>
+        <!-- Menu dropdown no canto direito -->
+        <div class="dropdown">
+            <button class="dropbtn">▼ Menu</button>
+            <div class="dropdown-content">
+                <a href="cv.html" target="_blank">CV</a>
+                <a href="trabalhos.html" target="_blank">Trabalhos</a>
+            </div>
+        </div>
+    </div>
+    <!-- Conteúdo -->
+    <div class="content">
+        <h1>Portfólio</h1>
+        <div class="name">
+            <p>Ana Silva</p>
+        </div>
+    </div>
+</body>
+</html>
