@@ -7,13 +7,10 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url("imagens/fundo.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
             text-align: center;
+            background-color: #474747;
         }
 
-        /* Barra de navegação */
         .navbar {
             background-color: black;
             padding: 15px;
@@ -37,7 +34,6 @@
             transform: translateY(-5px);
         }
 
-        /* menu dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -46,7 +42,6 @@
         .dropbtn {
             color: white;
             font-weight: bold;
-            text-decoration: none;
             background: none;
             border: none;
             cursor: pointer;
@@ -84,19 +79,38 @@
             display: block;
         }
 
-        /* Conteúdo principal */
         .content {
-            margin-top: 40px;
+            margin-top: 10px;
         }
 
         h1 {
-            font-size: 80px;
-            color: black;
+            font-size: 50px;
+            color: rgb(255, 255, 255);
         }
 
-        .name {
-            font-size: 40px;
-            color: #555;
+        /* GALERIA */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .gallery img {
+            width: 80%;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -118,10 +132,21 @@
         </div>
     </div>
 
-    <!-- Conteúdo -->
+    <!-- Título -->
     <div class="content">
         <h1>Trabalhos</h1>
-        <p class="name">Os meus projetos</p>
+    </div>
+
+    <!--imagens -->
+    <div class="gallery">
+        <img src="imagens/1.jpeg" >
+        <img src="imagens/2.jpeg" >
+        <img src="imagens/3.jpeg" >
+        <img src="imagens/4.jpeg" >
+        <img src="imagens/5.jpeg" >
+        <img src="imagens/6.png" >
+        <img src="imagens/7.png" >
+
     </div>
 
 </body>
