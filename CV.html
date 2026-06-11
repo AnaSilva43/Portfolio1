@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculo</title>
+    <title>Currículo - Ana Silva</title>
+    <meta name="description" content="Currículo de Ana Silva, estudante de Design de Comunicação na ESAP.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
@@ -65,20 +66,25 @@
             cursor: pointer;
             font-size: 20px;
             transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .dropbtn:hover {
-            opacity: 0.5;
+        .dropbtn:hover,
+        .dropbtn:focus {
+            opacity: 0.7;
+            outline: none;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
             right: 0;
-            background-color: #1a1a1a;
-            min-width: 160px;
-            border-radius: 8px;
-            box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.05);
+            background-color: rgba(20, 20, 20, 0.96);
+            min-width: 180px;
+            border-radius: 10px;
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.35);
             z-index: 10;
         }
 
@@ -89,9 +95,11 @@
             display: block;
             text-align: left;
             font-size: 14px;
+            transition: background-color 0.2s ease;
         }
 
-        .dropdown-content a:hover {
+        .dropdown-content a:hover,
+        .dropdown-content a[aria-current="page"] {
             background-color: #333333;
         }
 
@@ -134,6 +142,10 @@
         .section {
             border-left: 1px solid #222;
             padding-left: 20px;
+        }
+
+        .cv-column.right {
+            justify-content: flex-end;
         }
 
         .section h2 {
@@ -209,19 +221,21 @@
 
 <body>
 
-    <div class="navbar">
+    <header class="navbar">
         <a href="index.html" class="nav-logo">AS</a>
-        
-        <div class="nav-container">
+        <nav class="nav-container" aria-label="Navegação principal">
             <div class="dropdown">
-                <button class="dropbtn" aria-label="Menu"><i class="fa fa-navicon"></i></button>
+                <button class="dropbtn" aria-haspopup="true" aria-label="Menu">
+                    <i class="fa fa-navicon"></i> Menu
+                </button>
                 <div class="dropdown-content">
                     <a href="index.html">Início</a>
                     <a href="trabalhos.html">Projetos</a>
+                    <a href="CV.html" aria-current="page">Currículo</a>
                 </div>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
     <main class="content">
         <div class="cv-grid">
@@ -245,7 +259,7 @@
                 </div>
             </div>
 
-            <div class="cv-column" style="justify-content: flex-end;">
+            <div class="cv-column right">
                 <div class="section">
                     <h2>Competências</h2>
                     <ul>
@@ -271,7 +285,7 @@
     </main>
 
     <footer>
-        <a href="https://www.instagram.com/mangle8328/" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/mangle8328/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <i class="fa fa-instagram"></i>
         </a>
     </footer>
