@@ -1,153 +1,514 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-pt">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Trabalhos</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #474747;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        .navbar {
-            background-color: black;
-            padding: 15px;
-            border-radius: 0 0 15px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:wght@300;400;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            display: inline-block;
-            transition: 0.3s;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .nav-links a:hover {
-            color: #a8e6cf;
-            transform: translateY(-5px);
-        }
+    body {
+      font-family: "Cascadia Mono", monospace;
+      background-image: url(imagens/capaT.png);
+      background-color: #000000;
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 25px 60px;
+    }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+    /* Barra de Navegação Clean */
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      background-color: transparent;
+      padding-bottom: 10px;
+    }
 
-        .dropbtn {
-            color: white;
-            font-weight: bold;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
 
-        .dropbtn:hover {
-            color: #a8e6cf;
-            transform: translateY(-5px);
-        }
+    /* Menu Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #333;
-            min-width: 160px;
-            border-radius: 8px;
-        }
+    .dropbtn {
+      color: #ffffff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      transition: 0.3s;
+    }
 
-        .dropdown-content a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
+    .dropbtn:hover {
+      opacity: 0.5;
+    }
 
-        .dropdown-content a:hover {
-            background-color: #555;
-        }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #1a1a1a;
+      min-width: 160px;
+      border-radius: 8px;
+      box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.05);
+      z-index: 10;
+    }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      font-size: 14px;
+    }
 
-        .content {
-            margin-top: 10px;
-        }
+    .dropdown-content a:hover {
+      background-color: #333333;
+    }
 
-        h1 {
-            font-size: 50px;
-            color: rgb(255, 255, 255);
-        }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-        /* GALERIA */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 40px;
-        }
+    /* Título e Pequena Descrição */
+    .content {
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
 
-        .gallery img {
-            width: 80%;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      color: rgb(255, 255, 255);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
+    .project-description {
+      font-size: 14px;
+      color: #a0a0a0;
+      max-width: 700px;
+      line-height: 1.6;
+      font-weight: 300;
+    }
 
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* ==========================================================================
+       CARROSSEL 3D ATIVO (Ainda mais afastado para baixo)
+       ========================================================================== */
+    .carousel-3d-container {
+      width: 100%;
+      max-width: 950px;
+      height: 320px;
+      margin: 110px auto 5px auto; /* Aumentado para 110px para afastar bem do título/descrição */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .carousel-3d-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-item-3d {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease-in-out, z-index 0.6s;
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .carousel-item-3d img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    /* Posições Relativas */
+    .carousel-item-3d.prev-slide {
+      transform: translateX(-280px) scale(0.85);
+      opacity: 0.35;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .carousel-item-3d.center-slide {
+      transform: translateX(0) scale(1.15);
+      opacity: 1;
+      z-index: 3;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .carousel-item-3d.next-slide {
+      transform: translateX(280px) scale(0.85);
+      opacity: 0.35;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    /* Legenda Dinâmica do Item Central no Ecrã Principal */
+    .carousel-caption-top {
+      text-align: center;
+      font-size: 15px;
+      color: #ffffff;
+      min-height: 24px;
+      font-weight: 400;
+      margin-top: 25px;
+    }
+
+    /* ==========================================================================
+       MODAL / LIGHTBOX ADAPTADO
+       ========================================================================== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      width: 90%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close {
+      color: white;
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      z-index: 105;
+    }
+
+    .close:hover {
+      color: #bbb;
+      cursor: pointer;
+    }
+
+    /* Estrutura dos Slides: Alinhamento Horizontal Solicitado */
+    .mySlides {
+      display: none;
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-template-columns: 1fr 2fr 1fr; /* Número (Esquerda) | Imagem (Centro) | Descrição (Direita) */
+      align-items: center; /* Alinha verticalmente a meio */
+      justify-content: center;
+      gap: 40px;
+      padding: 0 40px;
+    }
+
+    /* Número à Esquerda */
+    .numbertext {
+      color: #959595;
+      font-size: 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    /* Imagem ao Centro */
+    .mySlides img {
+      width: 100%;
+      max-width: 500px;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+      justify-self: center;
+    }
+
+    /* Descrição à Direita */
+    .caption-container {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 400;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    /* Setas de navegação reposicionadas para as extremidades */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 20px;
+      margin-top: -30px;
+      color: white;
+      font-weight: bold;
+      font-size: 28px;
+      transition: 0.3s ease;
+      user-select: none;
+      z-index: 102;
+    }
+
+    .next { right: 0px; }
+    .prev { left: 0px; }
+    .prev:hover, .next:hover { color: #959595; }
+
+    @media (max-width: 900px) {
+      .mySlides {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 15px;
+        padding-top: 60px;
+      }
+      .numbertext { text-align: center; }
+      .caption-container { text-align: center; }
+      .mySlides img { max-height: 50vh; }
+      .carousel-3d-container { margin-top: 60px; height: 260px; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Barra -->
-    <div class="navbar">
-        <div class="nav-links">
-            <a href="index.html">Início</a>
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="dropdown">
+        <button class="dropbtn" aria-label="Menu"><i class="fa fa-navicon"></i></button>
+        <div class="dropdown-content">
+          <a href="index.html">Início</a>
+          <a href="cv.html">CV</a>
         </div>
-
-        <div class="dropdown">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-                <a href="cv.html">CV</a>
-                <a href="trabalhos.html">Trabalhos</a>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Título -->
-    <div class="content">
-        <h1>Trabalhos</h1>
+  <div class="content">
+    <h1>Projetos</h1>
+    <p class="project-description">Este é um espaço dedicado à exploração e desenvolvimento de diversos projetos de cariz prático e conceptual, realizados no âmbito do percurso académico em Design de Comunicação.</p>
+  </div>
+
+  <div class="carousel-3d-container">
+    <div class="carousel-3d-track">
+      <div class="carousel-item-3d" data-index="1"><img src="imagens/1.jpeg"></div>
+      <div class="carousel-item-3d" data-index="2"><img src="imagens/2.jpeg"></div>
+      <div class="carousel-item-3d" data-index="3"><img src="imagens/3.jpeg"></div>
+      <div class="carousel-item-3d" data-index="4"><img src="imagens/4.jpeg"></div>
+      <div class="carousel-item-3d" data-index="5"><img src="imagens/5.jpeg"></div>
+      <div class="carousel-item-3d" data-index="6"><img src="imagens/6.jpeg"></div>
+      <div class="carousel-item-3d" data-index="7"><img src="imagens/7.jpeg"></div>
+      <div class="carousel-item-3d" data-index="8"><img src="imagens/8.png"></div>
+      <div class="carousel-item-3d" data-index="9"><img src="imagens/9.jpeg"></div>
+      <div class="carousel-item-3d" data-index="10"><img src="imagens/10.png"></div>
     </div>
+  </div>
 
-    <!--imagens -->
-    <div class="gallery">
-        <img src="imagens/1.jpeg" >
-        <img src="imagens/2.jpeg" >
-        <img src="imagens/3.jpeg" >
-        <img src="imagens/4.jpeg" >
-        <img src="imagens/5.jpeg" >
-        <img src="imagens/6.png" >
-        <img src="imagens/7.png" >
+  <div class="carousel-caption-top" id="carousel-description"></div>
+
+  <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+      <div class="mySlides">
+        <div class="numbertext">1 / 10</div>
+        <img src="imagens/1.jpeg">
+        <div class="caption-container">1000 Words</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 10</div>
+        <img src="imagens/2.jpeg">
+        <div class="caption-container">Photoshop</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 10</div>
+        <img src="imagens/3.jpeg">
+        <div class="caption-container">Las Catrinas</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">4 / 10</div>
+        <img src="imagens/4.jpeg">
+        <div class="caption-container">Roboto</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">5 / 10</div>
+        <img src="imagens/5.jpeg">
+        <div class="caption-container">Takao 599 Museum</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">6 / 10</div>
+        <img src="imagens/6.jpeg">
+        <div class="caption-container">Evento Artístico</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">7 / 10</div>
+        <img src="imagens/7.jpeg">
+        <div class="caption-container">Apagão</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">8 / 10</div>
+        <img src="imagens/8.png">
+        <div class="caption-container">Ilustração</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">9 / 10</div>
+        <img src="imagens/9.jpeg">
+        <div class="caption-container">Receita</div>
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">10 / 10</div>
+        <img src="imagens/10.png">
+        <div class="caption-container">Ilustração</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
     </div>
+  </div>
+
+  <script>
+    /* LÓGICA DO CARROSSEL 3D FLUIDO */
+    let current3DIndex = 0;
+    const items3D = document.querySelectorAll('.carousel-item-3d');
+    const total3DItems = items3D.length;
+    const descText = document.getElementById('carousel-description');
+
+    const descriptions = {
+      1: "1000 Words",
+      2: "Photoshop",
+      3: "Las Catrinas",
+      4: "Roboto",
+      5: "Takao 599 Museum",
+      6: "Evento Artístico",
+      7: "Apagão",
+      8: "Ilustração",
+      9: "Receita",
+      10: "Ilustração"
+    };
+
+    function update3DCarousel() {
+      const prevIndex = (current3DIndex - 1 + total3DItems) % total3DItems;
+      const nextIndex = (current3DIndex + 1) % total3DItems;
+
+      items3D.forEach((item, i) => {
+        item.className = 'carousel-item-3d'; 
+        item.onclick = null; 
+
+        if (i === current3DIndex) {
+          item.classList.add('center-slide');
+          let realIndex = parseInt(item.getAttribute('data-index'));
+          descText.textContent = descriptions[realIndex];
+          
+          item.onclick = () => { 
+            openModal(); 
+            currentSlide(realIndex); 
+          };
+        } 
+        else if (i === prevIndex) {
+          item.classList.add('prev-slide');
+          item.onclick = () => {
+            current3DIndex = prevIndex;
+            update3DCarousel();
+          };
+        } 
+        else if (i === nextIndex) {
+          item.classList.add('next-slide');
+          item.onclick = () => {
+            current3DIndex = nextIndex;
+            update3DCarousel();
+          };
+        }
+      });
+    }
+
+    function autoAdvance() {
+      current3DIndex = (current3DIndex + 1) % total3DItems;
+      update3DCarousel();
+    }
+
+    update3DCarousel();
+    let carouselInterval = setInterval(autoAdvance, 3000);
+
+    const container3D = document.querySelector('.carousel-3d-container');
+    container3D.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+    container3D.addEventListener('mouseleave', () => carouselInterval = setInterval(autoAdvance, 3000));
+
+
+    /* LÓGICA DO LIGHTBOX MODAL */
+    function openModal() {
+      document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "grid"; /* Ativa o display grid para o alinhamento em 3 colunas */
+    }
+  </script>
 
 </body>
 </html>
